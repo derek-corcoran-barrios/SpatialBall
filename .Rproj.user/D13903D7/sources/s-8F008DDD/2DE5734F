@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1512498689930.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1566678565",
+    "id" : "2DE5734F",
+    "lastKnownWriteTime" : 1512564989,
+    "last_content_update" : 1512564989668,
+    "path" : "~/Documents/SpatialBall/vignettes/Starting.Rmd",
+    "project_path" : "vignettes/Starting.Rmd",
+    "properties" : {
+        "cursorPosition" : "104,60",
+        "scrollLine" : "93"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
