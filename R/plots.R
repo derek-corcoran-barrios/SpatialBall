@@ -445,8 +445,8 @@ DefShotSeasonGraphTeam<- function(Seasondata, team, quant = 0.4, type = "PPS") {
                             axis.text.y = element_blank(),
                             plot.title = element_text(size = 17, lineheight = 1.2, face = "bold"))+ ylim(c(-40, 280)) + xlim(c(-250, 250))+ theme(legend.position="bottom")}
   if(type == "PPS"){
-    GRAPH <- GRAPH +  ggtitle(paste("Points per Shot of", team, sep =" "))
-  }  else {GRAPH <- GRAPH +  ggtitle(paste("Shooting percentage", team, sep =" ")
+    GRAPH <- GRAPH +  ggtitle(paste("Defensive shot chart", team, sep =" "))
+  }  else {GRAPH <- GRAPH +  ggtitle(paste("Defensive shot chart", team, sep =" ")
   )}
 
 
