@@ -1,14 +1,18 @@
-#' Generates a shot chart for a given player
+#' Gets a season dataset from the NBA stats page
 #'
-#' Creates a shot chart for a player on a given season
+#' Creates a season dataset
 #' @param season the season of which you want to get the data, in a character format,
 #' defaults to "2017-18"
+#' @param type One of: "Regular Season", "Pre Season", "Playoffs", "All-Star",
+#' "All Star", "Preseason", defaults to "Regular Season"
 #' @param Start a character in a month/day/year format, if NULL (default)
 #' it starts at the beginning of the season
 #' @param End a character in a month/day/year format, if NULL (default)
 #' it ends scraping at the end of the season
+#'
 #' @return A season database
 #' @examples
+#'
 #' \dontrun{
 #'
 #' #Without date limits
@@ -18,6 +22,11 @@
 #' #With date limits
 #'
 #' Seasonscrape(season = "2017-18", Start = "12/05/2017", End = "12/07/2017")
+#'
+#' #Scraping playoff games with date limits
+#'
+#' Seasonscrape(season = "2016-17", type = "Playoffs", Start = "03/25/2017", End = "03/30/2017")
+#'
 #' }
 #' @importFrom rjson fromJSON
 #' @importFrom lubridate ymd
@@ -25,24 +34,26 @@
 #' @export
 #'
 
-Seasonscrape <- function(season = "2017-18", Start = NULL, End = NULL){
+Seasonscrape <- function(season = "2017-18", type = "Regular Season", Start = NULL, End = NULL){
+
+  type <-sub(x = type, " ", "+")
 
   Season <- list()
 
   if(is.null(Start) & is.null(End)){
-    shotURLtotal <- paste0("http://stats.nba.com/stats/shotchartdetail?CFID=33&CFPARAMS=",season ,"&ContextFilter=&ContextMeasure=FGA&DateFrom=&DateTo=&GameID=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlayerID=0&PlusMinus=N&Position=&Rank=N&RookieYear=&Season=",season,"&SeasonSegment=&SeasonType=Regular+Season&TeamID=0&VsConference=&VsDivision=&mode=Advanced&showDetails=0&showShots=1&showZones=0&PlayerPosition=")
+    shotURLtotal <- paste0("http://stats.nba.com/stats/shotchartdetail?CFID=33&CFPARAMS=",season ,"&ContextFilter=&ContextMeasure=FGA&DateFrom=&DateTo=&GameID=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlayerID=0&PlusMinus=N&Position=&Rank=N&RookieYear=&Season=",season,"&SeasonSegment=&SeasonType=", type,"&TeamID=0&VsConference=&VsDivision=&mode=Advanced&showDetails=0&showShots=1&showZones=0&PlayerPosition=")
   }
 
   if(!is.null(Start) & is.null(End)){
-    shotURLtotal <- paste0("http://stats.nba.com/stats/shotchartdetail?CFID=33&CFPARAMS=",season ,"&ContextFilter=&ContextMeasure=FGA&DateFrom=", Start ,"&DateTo=&GameID=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlayerID=0&PlusMinus=N&Position=&Rank=N&RookieYear=&Season=",season,"&SeasonSegment=&SeasonType=Regular+Season&TeamID=0&VsConference=&VsDivision=&mode=Advanced&showDetails=0&showShots=1&showZones=0&PlayerPosition=")
+    shotURLtotal <- paste0("http://stats.nba.com/stats/shotchartdetail?CFID=33&CFPARAMS=",season ,"&ContextFilter=&ContextMeasure=FGA&DateFrom=", Start ,"&DateTo=&GameID=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlayerID=0&PlusMinus=N&Position=&Rank=N&RookieYear=&Season=",season,"&SeasonSegment=&SeasonType=", type,"&TeamID=0&VsConference=&VsDivision=&mode=Advanced&showDetails=0&showShots=1&showZones=0&PlayerPosition=")
   }
 
   if(is.null(Start) & !is.null(End)){
-    shotURLtotal <- paste0("http://stats.nba.com/stats/shotchartdetail?CFID=33&CFPARAMS=",season ,"&ContextFilter=&ContextMeasure=FGA&DateFrom=&DateTo=",End,"&GameID=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlayerID=0&PlusMinus=N&Position=&Rank=N&RookieYear=&Season=",season,"&SeasonSegment=&SeasonType=Regular+Season&TeamID=0&VsConference=&VsDivision=&mode=Advanced&showDetails=0&showShots=1&showZones=0&PlayerPosition=")
+    shotURLtotal <- paste0("http://stats.nba.com/stats/shotchartdetail?CFID=33&CFPARAMS=",season ,"&ContextFilter=&ContextMeasure=FGA&DateFrom=&DateTo=",End,"&GameID=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlayerID=0&PlusMinus=N&Position=&Rank=N&RookieYear=&Season=",season,"&SeasonSegment=&SeasonType=", type,"&TeamID=0&VsConference=&VsDivision=&mode=Advanced&showDetails=0&showShots=1&showZones=0&PlayerPosition=")
   }
 
   if(!is.null(Start) & !is.null(End)){
-    shotURLtotal <- paste0("http://stats.nba.com/stats/shotchartdetail?CFID=33&CFPARAMS=",season ,"&ContextFilter=&ContextMeasure=FGA&DateFrom=", Start ,"&DateTo=",End,"&GameID=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlayerID=0&PlusMinus=N&Position=&Rank=N&RookieYear=&Season=",season,"&SeasonSegment=&SeasonType=Regular+Season&TeamID=0&VsConference=&VsDivision=&mode=Advanced&showDetails=0&showShots=1&showZones=0&PlayerPosition=")
+    shotURLtotal <- paste0("http://stats.nba.com/stats/shotchartdetail?CFID=33&CFPARAMS=",season ,"&ContextFilter=&ContextMeasure=FGA&DateFrom=", Start ,"&DateTo=",End,"&GameID=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlayerID=0&PlusMinus=N&Position=&Rank=N&RookieYear=&Season=",season,"&SeasonSegment=&SeasonType=", type,"&TeamID=0&VsConference=&VsDivision=&mode=Advanced&showDetails=0&showShots=1&showZones=0&PlayerPosition=")
   }
 
   # import from JSON
