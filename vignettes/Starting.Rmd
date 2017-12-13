@@ -19,18 +19,18 @@ knitr::opts_chunk$set(
 ```
 
 
-The Spatialball package was developed to analyze and visualize spatial data in the NBA. We can separate the Spatialball functions into three groups:
+The Spatialball project was developed to analyze and visualize spatial data in the NBA. We can separate the Spatialball functions into three groups:
 
 * Data scraping
 * Data visualization
 * Data analysis
 
+The *SpatialBall* package has only the visualization capabilities of the project, and it has been thought mainly as a demo, and it comes with the full dataset of the 2016-17 season. The full software version was build for reasearch and consultancy. Its documentation can be found [here](https://derek-corcoran-barrios.github.io/Starting.html), if you want to ask about the *SpatialBall2* package you can e-mail Derek Corcoran (derek.corcoran.barrios@gmail.com) or Nick Watanabe (nickwatanabe8@gmail.com) 
+
 
 ```{r}
 library(SpatialBall)
 ```
-
-## Data scraping
 
 ## Data visualization
 
@@ -106,11 +106,12 @@ data("season2017")
 DefShotSeasonGraphTeam(season2017, team = "Sas", type = "PCT")
 ```
 
+
 ### League level visualization
 
-## Data analysis
+The *ShotSeasonGraph* function takes an NBA season object and makes a shot chart of all the shots takes through that regular season. You can choose to either plot the results based on Points per Shot or on Shooting Percentage, as in all previous functions. This function is exemplified in figure 12.
 
-
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+```{r, fig.height= 5, fig.width=6, fig.cap="Figure 12. Shot chart of the Whole 2017 Season"}
+data("season2017")
+ShotSeasonGraph(season2017, quant = 0.4)
+```
