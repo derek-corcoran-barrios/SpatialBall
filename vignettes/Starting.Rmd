@@ -27,8 +27,14 @@ The Spatialball project was developed to analyze and visualize spatial data in t
 
 The *SpatialBall* package has only the visualization capabilities of the project, and it has been thought mainly as a demo, and it comes with the full dataset of the 2016-17 season. The full software version was build for reasearch and consultancy. Its documentation can be found [here](https://derek-corcoran-barrios.github.io/Starting.html), if you want to ask about the *SpatialBall2* package you can e-mail Derek Corcoran (derek.corcoran.barrios@gmail.com) or Nick Watanabe (nickwatanabe8@gmail.com) 
 
+You can start by installing and loading the package spatialball
 
-```{r}
+```{r, eval=FALSE}
+install.packages("SpatialBall")
+library(SpatialBall)
+```
+
+```{r, echo=FALSE}
 library(SpatialBall)
 ```
 

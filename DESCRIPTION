@@ -10,7 +10,7 @@ Description: The Spatialball package was built for the creation
     and seasons, and more comprehensively for spatial analysis 
     of NBA data.
     For more detailed analysis please contact the maintainer.
-URL: https://derek-corcoran-barrios.github.io/
+URL: https://derek-corcoran-barrios.github.io/SpatialBall.html
 Depends: R (>= 2.10)
 Imports: dplyr, hexbin, ggplot2, lubridate, RColorBrewer
 License: GPL (>= 2)

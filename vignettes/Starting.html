@@ -12,7 +12,7 @@
 
 <meta name="author" content="Derek Corcoran, and Nicholas Watanabe" />
 
-<meta name="date" content="2017-12-13" />
+<meta name="date" content="2017-12-14" />
 
 <title>Starting to use the Spatialball package</title>
 
@@ -70,7 +70,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">Starting to use the Spatialball package</h1>
 <h4 class="author"><em>Derek Corcoran, and Nicholas Watanabe</em></h4>
-<h4 class="date"><em>2017-12-13</em></h4>
+<h4 class="date"><em>2017-12-14</em></h4>
 
 
 
@@ -81,7 +81,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Data analysis</li>
 </ul>
 <p>The <em>SpatialBall</em> package has only the visualization capabilities of the project, and it has been thought mainly as a demo, and it comes with the full dataset of the 2016-17 season. The full software version was build for reasearch and consultancy. Its documentation can be found <a href="https://derek-corcoran-barrios.github.io/Starting.html">here</a>, if you want to ask about the <em>SpatialBall2</em> package you can e-mail Derek Corcoran (<a href="mailto:derek.corcoran.barrios@gmail.com">derek.corcoran.barrios@gmail.com</a>) or Nick Watanabe (<a href="mailto:nickwatanabe8@gmail.com">nickwatanabe8@gmail.com</a>)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(SpatialBall)</code></pre></div>
+<p>You can start by installing and loading the package spatialball</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;SpatialBall&quot;</span>)
+<span class="kw">library</span>(SpatialBall)</code></pre></div>
 <div id="data-visualization" class="section level2">
 <h2>Data visualization</h2>
 <p>We have three levels of data visualization with graphs at the player, team, and league level. We will go into detail in each of those categories. First for players and all other levels of visualization we have shot charts. In our shot charts (see Fig. 1 as an example) the color scheme will be a scale of the points per shot or percentage depending on the options you choose. The size of the hexagon in shot charts represents the frequency of the shots taken, by the league, team or player, with bigger hexagons meaning a higher frequency of shots. Now we will go in detail into each of the visualizations available in our package.</p>

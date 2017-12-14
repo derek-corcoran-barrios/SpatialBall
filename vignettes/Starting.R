@@ -4,7 +4,11 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-## ------------------------------------------------------------------------
+## ---- eval=FALSE---------------------------------------------------------
+#  install.packages("SpatialBall")
+#  library(SpatialBall)
+
+## ---- echo=FALSE---------------------------------------------------------
 library(SpatialBall)
 
 ## ---- fig.height= 5, fig.width=6, fig.cap="Figure 1. Shot chart of Stephen Curry"----
