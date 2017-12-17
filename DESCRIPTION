@@ -1,8 +1,8 @@
 Package: SpatialBall
 Type: Package
-Title: Spatial NBA visualization and analysis
+Title: Spatial NBA Visualization and Analysis
 Version: 0.1.0
-Authors@R: person("Derek", "Corcoran", email = "dere.corcoran.barrios@gmail.com",
+Authors@R: person("Derek", "Corcoran", email = "derek.corcoran.barrios@gmail.com",
   role = c("aut", "cre"))
 Maintainer: Derek Corcoran <derek.corcoran.barrios@gmail.com>
 Description: The Spatialball package was built for the creation 
